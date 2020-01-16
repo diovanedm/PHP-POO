@@ -1,52 +1,41 @@
 <?php 
+# HERANÇA
 
-class Login {
-    private $email;
-    private $senha;
-    private $nome;
+class Veiculo {
+    public $modelo;
+    public $cor;
+    public $ano;
 
-    public function __construct($email, $senha, $nome){
-        $this->setEmail($email);
-        $this->setSenha($senha);
-        $this->setNome($nome);
+    public function Andar() {
+        echo "Andou ";
     }
+    public function Parar() {
+        echo "Parou ";
+    } 
+}
 
-    public function getNome() {
-        return $this->nome;
-    }
-    public function setNome($n) {
-        $this->nome = $n;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-    public function setEmail($e) {
-        $email = filter_var($e, FILTER_SANITIZE_EMAIL);
-        $this->email = $email;
-    }
-
-    public function getSenha() {
-        return $this->senha;
-    }
-    public function setSenha($s) {
-        $this->senha = $s;
-    }
-
-    public function Logar() {
-        if($this->email == "teste@teste.com" and $this->senha == "123456"):
-            echo "logado com sucesso ".$this->nome."<br>";
-        else:
-            echo "login invalido ".$this->nome."<br>";
-        endif;
+class Carro extends Veiculo {
+    public function ligarLimpador() {
+        echo "limpando em 321 <br>";
     }
 }
 
-$loginDiovane = new Login("diovane.dm@gmail.com", "diovane98", "Diovane Maia");
-$loginDiovane->Logar();
+class Moto extends Veiculo {
+    public function darGrau() {
+        echo "dando grau em 321";
+    }
+}
 
-// ----------------------------------
+$carro = new Carro();
+$carro->modelo = "Gol";
+$carro->cor = "Vermelho";
+$carro->ano = 2018;
+$carro->Andar();
+$carro->ligarLimpador();
 
-$loginTeste = new Login("teste/@teste.com", "123456", "Rodrigo Oliveira");
-$loginTeste->Logar();
-
+$moto = new Moto();
+$moto->modelo = "XRE 300";
+$moto->cor = "Branca";
+$moto->ano = 2015;
+$moto->Andar();
+$moto->darGrau();
