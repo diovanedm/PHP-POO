@@ -2,7 +2,7 @@
 # HERANÇA
 
 class Veiculo {
-    public $modelo;
+    private $modelo;
     public $cor;
     public $ano;
 
@@ -18,6 +18,13 @@ class Carro extends Veiculo {
     public function ligarLimpador() {
         echo "limpando em 321 <br>";
     }
+
+    public function setModelo($m) {
+        $this->modelo = $m;
+    }
+    public function getModelo() {
+        return $this->modelo."<br>";
+    }
 }
 
 class Moto extends Veiculo {
@@ -26,16 +33,7 @@ class Moto extends Veiculo {
     }
 }
 
-$carro = new Carro();
-$carro->modelo = "Gol";
-$carro->cor = "Vermelho";
-$carro->ano = 2018;
-$carro->Andar();
-$carro->ligarLimpador();
-
-$moto = new Moto();
-$moto->modelo = "XRE 300";
-$moto->cor = "Branca";
-$moto->ano = 2015;
-$moto->Andar();
-$moto->darGrau();
+$veiculo = new Carro();
+$veiculo->setModelo("Corsa 2.0");
+echo $veiculo->getModelo();
+var_dump($veiculo);
