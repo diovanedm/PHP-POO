@@ -2,12 +2,15 @@
 # HERANÇA
 
 class Veiculo {
-    private $modelo;
+    public $modelo;
     public $cor;
     public $ano;
 
-    public function Andar() {
+    protected function Andar() {
         echo "Andou ";
+    }
+    private function naoAndou() {
+        echo "Não andou ";
     }
     public function Parar() {
         echo "Parou ";
@@ -25,6 +28,13 @@ class Carro extends Veiculo {
     public function getModelo() {
         return $this->modelo."<br>";
     }
+
+    public function mostrarAcao() {
+        $this->Andar();
+    }
+    public function acaoNaoExecutada() {
+        $this->naoAndou();
+    }
 }
 
 class Moto extends Veiculo {
@@ -34,6 +44,5 @@ class Moto extends Veiculo {
 }
 
 $veiculo = new Carro();
-$veiculo->setModelo("Corsa 2.0");
-echo $veiculo->getModelo();
-var_dump($veiculo);
+$veiculo->mostrarAcao();
+$veiculo->acaoNaoExecutada();
