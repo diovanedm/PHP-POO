@@ -4,7 +4,7 @@
 [x] aula 4
 [x] aula 5
 [x] aula 6
-[] aula 7
+[x] aula 7
 [] aula 8
 [] aula 9
 [] aula 10

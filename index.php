@@ -1,48 +1,42 @@
 <?php 
-# HERANÇA
 
-class Veiculo {
-    public $modelo;
-    public $cor;
-    public $ano;
+abstract class Banco {
+    protected $saldo;
 
-    protected function Andar() {
-        echo "Andou ";
+    public function setSaldo($s) {
+        $this->saldo = $s;
     }
-    private function naoAndou() {
-        echo "Não andou ";
+    public function getSaldo() {
+        echo "<br> Saldo: ".$this->saldo;
+        return $this->saldo;
     }
-    public function Parar() {
-        echo "Parou ";
-    } 
+
+    abstract protected function Sacar($s);
+    abstract protected function Depositar($d);
 }
 
-class Carro extends Veiculo {
-    public function ligarLimpador() {
-        echo "limpando em 321 <br>";
+class Itau extends Banco { 
+    public function Sacar($s) {
+        $this->saldo -= $s;
+        echo "<br> Sacou ".$s;
     }
-
-    public function setModelo($m) {
-        $this->modelo = $m;
-    }
-    public function getModelo() {
-        return $this->modelo."<br>";
-    }
-
-    public function mostrarAcao() {
-        $this->Andar();
-    }
-    public function acaoNaoExecutada() {
-        $this->naoAndou();
+    public function Depositar($d) {
+        $this->saldo += $d;
+        echo "<br> Depositou ".$d;
     }
 }
 
-class Moto extends Veiculo {
-    public function darGrau() {
-        echo "dando grau em 321";
-    }
-}
+$itau = new Itau;
+$itau->setSaldo(500);
+$itau->getSaldo();
 
-$veiculo = new Carro();
-$veiculo->mostrarAcao();
-$veiculo->acaoNaoExecutada();
+$itau->Sacar(250);
+$itau->getSaldo();
+
+$itau->Depositar(1000);
+$itau->getSaldo();
+
+
+
+
+
