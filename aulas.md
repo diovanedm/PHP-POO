@@ -5,9 +5,9 @@
 [x] aula 5
 [x] aula 6
 [x] aula 7
-[] aula 8
-[] aula 9
-[] aula 10
+[x] aula 8
+[x] aula 9
+[x] aula 10
 [] aula 11
 [] aula 12
 [] aula 13

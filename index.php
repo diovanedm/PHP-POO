@@ -1,22 +1,19 @@
 <?php 
+#Métodos e atributos estáticos
 
-class Pessoa {
-    const nome = "Rodrigo";
+class Login {
+    public static $user;
 
-    public function exibirNome() {
-        echo self::nome;
+    public static function verificaLogin() {
+        echo "O ".self::$user." está logado!";
+    }
+
+    public function sairSistema() {
+        echo "O usuário deslogou";
     }
 }
 
-class Rodrigo extends Pessoa {
-    const nome = "Oliveria";
-
-    public function exibirNome() {
-        echo parent::nome;
-        echo " ";
-        echo self::nome;
-    }
-}
-
-$rodrigo = new Rodrigo();
-$rodrigo->exibirNome();
+Login::$user = "Diovane";
+Login::verificaLogin();
+$login = new Login();
+$login->sairSistema();
