@@ -1,42 +1,22 @@
 <?php 
 
-abstract class Banco {
-    protected $saldo;
+class Pessoa {
+    const nome = "Rodrigo";
 
-    public function setSaldo($s) {
-        $this->saldo = $s;
-    }
-    public function getSaldo() {
-        echo "<br> Saldo: ".$this->saldo;
-        return $this->saldo;
-    }
-
-    abstract protected function Sacar($s);
-    abstract protected function Depositar($d);
-}
-
-class Itau extends Banco { 
-    public function Sacar($s) {
-        $this->saldo -= $s;
-        echo "<br> Sacou ".$s;
-    }
-    public function Depositar($d) {
-        $this->saldo += $d;
-        echo "<br> Depositou ".$d;
+    public function exibirNome() {
+        echo self::nome;
     }
 }
 
-$itau = new Itau;
-$itau->setSaldo(500);
-$itau->getSaldo();
+class Rodrigo extends Pessoa {
+    const nome = "Oliveria";
 
-$itau->Sacar(250);
-$itau->getSaldo();
+    public function exibirNome() {
+        echo parent::nome;
+        echo " ";
+        echo self::nome;
+    }
+}
 
-$itau->Depositar(1000);
-$itau->getSaldo();
-
-
-
-
-
+$rodrigo = new Rodrigo();
+$rodrigo->exibirNome();
