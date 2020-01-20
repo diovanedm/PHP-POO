@@ -8,7 +8,7 @@
 [x] aula 8
 [x] aula 9
 [x] aula 10
-[] aula 11
+[x] aula 11
 [] aula 12
 [] aula 13
 [] aula 14

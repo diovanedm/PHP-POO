@@ -1,19 +1,22 @@
 <?php 
-#Métodos e atributos estáticos
+#Polimorfismo
 
-class Login {
-    public static $user;
+class homemGrande {
+    public static $homem;
 
-    public static function verificaLogin() {
-        echo "O ".self::$user." está logado!";
-    }
-
-    public function sairSistema() {
-        echo "O usuário deslogou";
+    public static function Andar() {
+        echo self::$homem;
     }
 }
 
-Login::$user = "Diovane";
-Login::verificaLogin();
-$login = new Login();
-$login->sairSistema();
+class homemPequeno extends homemGrande {
+    public static function Andar() {
+        echo self::$homem;
+    }
+} 
+
+homemGrande::$homem = "andou";
+homemGrande::Andar(); 
+echo '<br>';
+homemPequeno::$homem = "correu";
+homemPequeno::Andar();
