@@ -4,10 +4,16 @@
 require 'classes/Produto.php';
 require 'models/Produto.php';
 
-$produto = new\classes\Produto();
+use classes\Produto as produtClasses;
+$produto = new produtClasses();
 $produto->mostrarDetalhes();
+
 echo "<br>";
-$models = new\models\Produto();
-$models->mostrarDetalhes();
+
+use models\Produto as productModels;
+$produto2 = new productModels();
+$produto2->mostrarDetalhes();
+
+
 
 
