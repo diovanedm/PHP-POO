@@ -1,22 +1,24 @@
 <?php 
-#Polimorfismo
+#Interfaces
 
-class homemGrande {
-    public static $homem;
-
-    public static function Andar() {
-        echo self::$homem;
-    }
+interface Crud {
+    public function create();
+    public function read()
+    public function update();
+    public function delete();
 }
 
-class homemPequeno extends homemGrande {
-    public static function Andar() {
-        echo self::$homem;
+class Noticias implements Crud {
+    public function create() {
+        # lógica para criar um notícia
     }
-} 
-
-homemGrande::$homem = "andou";
-homemGrande::Andar(); 
-echo '<br>';
-homemPequeno::$homem = "correu";
-homemPequeno::Andar();
+    public function read() {
+        # lógica para criar uma notícia
+    }
+    public function update() {
+        # lógica para atualizar uma notícia
+    }
+    public function delete() {
+        # lógica para deletar uma notícia
+    }
+}
