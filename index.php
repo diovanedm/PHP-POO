@@ -1,24 +1,13 @@
 <?php 
-#Interfaces
+#Namespaces
 
-interface Crud {
-    public function create();
-    public function read()
-    public function update();
-    public function delete();
-}
+require 'classes/Produto.php';
+require 'models/Produto.php';
 
-class Noticias implements Crud {
-    public function create() {
-        # lógica para criar um notícia
-    }
-    public function read() {
-        # lógica para criar uma notícia
-    }
-    public function update() {
-        # lógica para atualizar uma notícia
-    }
-    public function delete() {
-        # lógica para deletar uma notícia
-    }
-}
+$produto = new\classes\Produto();
+$produto->mostrarDetalhes();
+echo "<br>";
+$models = new\models\Produto();
+$models->mostrarDetalhes();
+
+
