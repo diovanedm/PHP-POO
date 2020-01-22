@@ -1,19 +1,17 @@
 <?php 
-#Namespaces
+# Referência e Clonagem de objetos
 
-require 'classes/Produto.php';
-require 'models/Produto.php';
+class Pessoa {
+    public $idade;
+}
 
-use classes\Produto as produtClasses;
-$produto = new produtClasses();
-$produto->mostrarDetalhes();
+$pessoa = new Pessoa();
+$pessoa->idade = 25;
 
-echo "<br>";
+$pessoa2 = $pessoa;
+$pessoa2->idade = 35;
 
-use models\Produto as productModels;
-$produto2 = new productModels();
-$produto2->mostrarDetalhes();
-
+echo $pessoa->idade;
 
 
 
