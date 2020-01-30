@@ -7,29 +7,33 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 
-# Tratamento de exceções
-class NewsLetter {
-    public function cadastrarEmail($email) {
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
-            throw new Exception("Este email é inválido", 1);
-        else: 
-            echo "Email cadastro com sucesso!";
-        endif;
-    }
+# Relação entre os objetos(Associação)
+
+class Cliente {
+    public $nome;
+    public $endereco;
+}
+class Pedido {
+    public $numero;
+    public $cliente;
 }
 
-$newsLetter = new NewsLetter();
-try {
-    $newsLetter->cadastrarEmail("diovane@");
-} catch(Exception $e) {
-    echo "Messagem: ". $e->getMessage()."<br>";
-    echo "Código: ". $e->getCode()."<br>";
-    echo "Linha: ". $e->getLine()."<br>";
-    echo "Arquivo: ". $e->getFile()."<br>";
-}
+$cliente_01 = new Cliente();
+$cliente_01->nome = "Diovane";
+$cliente_01->endereco = "cel jose soares - 282 - Glória";
 
+$pedido_01 = new Pedido();
+$pedido_01->numero = 01;
+$pedido_01->cliente = $cliente_01;
 
+$dados = array(
+    "numero_pedido_cliente" => $pedido_01->numero,
+    "nome_cliente" => $pedido_01->cliente->nome,
+    "endereco_cliente" => $pedido_01->cliente->endereco
+);
 
-
+echo $dados["numero_pedido_cliente"]."<br>";
+echo $dados["nome_cliente"]."<br>";
+echo $dados["endereco_cliente"];
 
 
