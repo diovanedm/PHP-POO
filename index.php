@@ -29,11 +29,12 @@ $pedido_01->cliente = $cliente_01;
 $dados = array(
     "numero_pedido_cliente" => $pedido_01->numero,
     "nome_cliente" => $pedido_01->cliente->nome,
-    "endereco_cliente" => $pedido_01->cliente->endereco
+    "endereco_cli" => $pedido_01->cliente->endereco
 );
 
 echo $dados["numero_pedido_cliente"]."<br>";
 echo $dados["nome_cliente"]."<br>";
-echo $dados["endereco_cliente"];
+echo $dados["endereco_cli"];
+
 
 
