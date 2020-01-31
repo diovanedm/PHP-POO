@@ -7,34 +7,41 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 
-# Relação entre os objetos(Associação)
+# Relação entre os objetos(Agregação)
 
-class Cliente {
-    public $nome;
-    public $endereco;
+class Cachorro {
+    public function __construct($nome, $idade, $sexo) {
+        $this->nome = $nome;
+        $this->idade = $idade;
+        $this->sexo = $sexo;
+    }
 }
-class Pedido {
-    public $numero;
-    public $cliente;
+
+class CasaDeAdocao {
+    public $cachorros;
+
+    public function adicionar(Cachorro $cachorro) {
+        $this->cachorros[] = $cachorro;
+    }
+
+    public function mostrar() {
+        foreach($this->cachorros as $cachorro) {
+            echo $cachorro->nome."<br>";
+            echo $cachorro->idade."<br>";
+            echo $cachorro->sexo."<hr>";
+        }
+    }
 }
 
-$cliente_01 = new Cliente();
-$cliente_01->nome = "Diovane";
-$cliente_01->endereco = "cel jose soares - 282 - Glória";
+$cachorro = new Cachorro("Floquinho", "2", "Masculino");
+$cachorro1 = new Cachorro("Lupi", "3", "Masculino");
 
-$pedido_01 = new Pedido();
-$pedido_01->numero = 01;
-$pedido_01->cliente = $cliente_01;
+$casaDeAdocao = new CasaDeAdocao();
 
-$dados = array(
-    "numero_pedido_cliente" => $pedido_01->numero,
-    "nome_cliente" => $pedido_01->cliente->nome,
-    "endereco_cli" => $pedido_01->cliente->endereco
-);
+$casaDeAdocao->adicionar($cachorro);
+$casaDeAdocao->adicionar($cachorro1);
 
-echo $dados["numero_pedido_cliente"]."<br>";
-echo $dados["nome_cliente"]."<br>";
-echo $dados["endereco_cli"];
+$casaDeAdocao->mostrar();
 
 
 
