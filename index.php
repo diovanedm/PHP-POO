@@ -7,41 +7,27 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 
-# Relação entre os objetos(Agregação)
+# Composição
 
-class Cachorro {
-    public function __construct($nome, $idade, $sexo) {
+class Pessoa {
+    public function atribuiNome($nome) {
+        return "Meu nome é ".$nome;
+    }
+}
+
+class Exibe {
+    public $nome;
+    public $pessoa;
+
+    function __construct($nome) {
         $this->nome = $nome;
-        $this->idade = $idade;
-        $this->sexo = $sexo;
-    }
-}
-
-class CasaDeAdocao {
-    public $cachorros;
-
-    public function adicionar(Cachorro $cachorro) {
-        $this->cachorros[] = $cachorro;
+        $this->pessoa = new Pessoa();
     }
 
-    public function mostrar() {
-        foreach($this->cachorros as $cachorro) {
-            echo $cachorro->nome."<br>";
-            echo $cachorro->idade."<br>";
-            echo $cachorro->sexo."<hr>";
-        }
+    public function exibeNome() {
+        echo $this->pessoa->atribuiNome($this->nome);
     }
-}
+} 
 
-$cachorro = new Cachorro("Floquinho", "2", "Masculino");
-$cachorro1 = new Cachorro("Lupi", "3", "Masculino");
-
-$casaDeAdocao = new CasaDeAdocao();
-
-$casaDeAdocao->adicionar($cachorro);
-$casaDeAdocao->adicionar($cachorro1);
-
-$casaDeAdocao->mostrar();
-
-
-
+$exibe = new Exibe("Diovane");
+$exibe->exibeNome();
