@@ -29,5 +29,24 @@ class Exibe {
     }
 } 
 
-$exibe = new Exibe("Diovane");
-$exibe->exibeNome();
+# Associação 
+class Senha {
+    public $senha;
+    public $pessoa;
+}
+
+class Diovane {
+    public $nome;
+    public $idade;
+}
+
+$diovane = new Diovane();
+$diovane->nome = "Diovane Maia Soares";
+$diovane->idade = 21;
+
+$senha = new Senha();
+$senha->senha = 1234;
+$senha->pessoa = $diovane;
+
+echo "Meu nome é ".$senha->pessoa->nome." tenho ".$senha->pessoa->idade." e minha senha é: ".$senha->senha;
+

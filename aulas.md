@@ -15,7 +15,7 @@
 [x] aula 15
 [x] aula 16
 [x] aula 17
-[] aula 18
+[x] aula 18
 [] aula 19
 [] aula 20
 [] aula 21
