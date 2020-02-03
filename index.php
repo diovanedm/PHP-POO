@@ -7,46 +7,45 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 
-# Composição
+# Métodos mágicos
 
 class Pessoa {
-    public function atribuiNome($nome) {
-        return "Meu nome é ".$nome;
+    private $dados;
+
+    public function __set($dado, $valor){
+        $this->dados[$dado] = $valor;
+    }
+
+    public function __get($dado){
+        return $this->dados[$dado];
+    }
+
+    public function __tostring() {
+        return "Tentei imprimir o objeto";
+    }
+
+    public function __invoke() {
+        return "Objeto como função";
     }
 }
 
-class Exibe {
-    public $nome;
-    public $pessoa;
+$pessoa = new Pessoa();
+$pessoa->nome = "Diovane";
+$pessoa->dado = 21;
+$pessoa->sexo = "Masculino";
 
-    function __construct($nome) {
-        $this->nome = $nome;
-        $this->pessoa = new Pessoa();
-    }
+echo $pessoa->nome;
+echo $pessoa->dado;
+echo $pessoa->sexo; 
 
-    public function exibeNome() {
-        echo $this->pessoa->atribuiNome($this->nome);
-    }
-} 
+echo "<br>";
 
-# Associação 
-class Senha {
-    public $senha;
-    public $pessoa;
-}
+echo $pessoa;
 
-class Diovane {
-    public $nome;
-    public $idade;
-}
+echo "<br>";
 
-$diovane = new Diovane();
-$diovane->nome = "Diovane Maia Soares";
-$diovane->idade = 21;
+echo $pessoa();
 
-$senha = new Senha();
-$senha->senha = 1234;
-$senha->pessoa = $diovane;
 
-echo "Meu nome é ".$senha->pessoa->nome." tenho ".$senha->pessoa->idade." e minha senha é: ".$senha->senha;
+
 
